@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+//Components
+//import OwnName from "./path"
+import { Navbar, SubNavbar } from "./components/Topbar"; // named export and
+//Mock Data
+import { users } from "./utils/mockData";
+//CSS
+import "./App.css";
 
-function App() {
+const App = () => {
+  console.log("USERS", users);
+  // 0 undefined null On false ""
+  const styles = { borderBottom: "1px solid", color: "red" }; // internal Styles
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Navbar />
+      <SubNavbar />
+      <div className="cards-container">
+        {users.length &&
+          users.map((item) => (
+            <div className="card">
+              <img src={item.avatar_url} className="card-image" />
+              <h1 style={styles}>{item.login}</h1>
+            </div>
+          ))}
+      </div>
     </div>
   );
-}
+};
 
 export default App;
