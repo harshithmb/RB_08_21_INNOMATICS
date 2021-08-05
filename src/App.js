@@ -9,7 +9,7 @@ import "./App.css";
 
 const App = () => {
   console.log("USERS", users);
-  // 0 undefined null On false ""
+  // 0 undefined null On false "" " "
   const styles = { borderBottom: "1px solid", color: "red" }; // internal Styles
   return (
     <div>
