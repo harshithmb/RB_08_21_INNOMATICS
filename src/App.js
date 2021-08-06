@@ -1,31 +1,31 @@
-import React from "react";
-//Components
-//import OwnName from "./path"
-import { Navbar, SubNavbar } from "./components/Topbar"; // named export and
-//Mock Data
+import React, { Fragment } from "react"; //imr
+import { Navbar as OwnNavbar, SubNavbar } from "./components/Topbar";
 import { users } from "./utils/mockData";
-//CSS
 import "./App.css";
+import Card from "./components/Card";
+//import OwnName from "./default"
+//sfc
 
 const App = () => {
-  console.log("USERS", users);
-  // 0 undefined null On false "" " "
-  const styles = { borderBottom: "1px solid", color: "red" }; // internal Styles
   return (
-    <div>
-      <Navbar />
+    <>
+      <OwnNavbar />
       <SubNavbar />
-      <div className="cards-container">
-        {users.length &&
-          users.map((item) => (
-            <div className="card">
-              <img src={item.avatar_url} className="card-image" />
-              <h1 style={styles}>{item.login}</h1>
-            </div>
-          ))}
-      </div>
-    </div>
+      {users.length &&
+        users.map(({ avatar_url, login }) => (
+          <Card login={login} avatar={avatar_url} />
+        ))}
+    </>
   );
 };
 
 export default App;
+
+// let obj = { login: "Login", avatar: "...." };
+// Card(obj);
+
+// function example(obj) {
+//   return obj.name + obj.age;
+// }
+
+// example({ name: "abc", age: 123 });
